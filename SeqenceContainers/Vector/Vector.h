@@ -50,7 +50,7 @@ protected :
 		}
 	}
 
-	#pragma region // 释放内存和析构元素
+#pragma region // 释放内存和析构元素
 	
 	void deallocate() {
 		if(start) {
@@ -58,9 +58,9 @@ protected :
 		}
 	}
 
-	#pragma endregion
+#pragma endregion
 
-	#pragma region // 分配内存和构造元素
+#pragma region // 分配内存和构造元素
 
 	void fill_initialize(size_type n, const T& value) {
 		start = allocate_and_fill(n, value);
@@ -77,10 +77,10 @@ protected :
 		return result;
 	}
 
-	#pragma endregion
+#pragma endregion
 
 public :
-	#pragma region // 对Vector的读操作
+#pragma region // 对Vector的读操作
 	
 	iterator begin() 					{ return start; }
 	iterator end()   					{ return finish; }
@@ -91,27 +91,27 @@ public :
 	reference front() 					{ return *begin(); }
 	reference back() 					{ return *(end() - 1); }
 
-	#pragma endregion
+#pragma endregion
 
-	#pragma region // 构造函数
+#pragma region // 构造函数
 	Vector() : start(0), finish(0), end_of_storage(0) {}
 	Vector(size_type n, const T& value) { fill_initialize(n, value); }
 	Vector(int n, const T& value) 		{ fill_initialize(n, value); }
 	Vector(long n, const T& value) 		{ fill_initialize(n, value); }
 	explicit Vector(size_type n) 		{ fill_initialize(n, T()); }
 
-	#pragma endregion
+#pragma endregion
 
-	#pragma region
+#pragma region
 
 	~Vector() {
 		destroy(start, finish);
 		deallocate();
 	}
 
-	#pragma endregion
+#pragma endregion
 
-	#pragma region // 对Vector的写操作
+#pragma region // 对Vector的写操作
 
 	void pop_back() {
 		--finish;
@@ -143,7 +143,7 @@ public :
 		return position;
 	}
 
-	#pragma endregion
+#pragma endregion
 };
 
 #endif

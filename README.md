@@ -9,7 +9,7 @@
 ## SeqenceContainers
 ### Vector (Done)
 
-### List
+### List   (Done)
 
 ### Deque
 
