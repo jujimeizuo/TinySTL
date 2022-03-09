@@ -11,7 +11,7 @@
 
 ### List   (Done)
 
-### Deque  (50% runtime error)
+### Deque  (90% push_front() -> runtime error)
 
 ### Queue
 
