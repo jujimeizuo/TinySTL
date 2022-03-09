@@ -3,7 +3,7 @@
 
 #include <memory>
 
-template<class T, class Ref, class Ptr, size_t Bufsiz>
+template<class T, class Ref, class Ptr, size_t BufSiz>
 struct Deque_Iterator {
 #pragma region
 	typedef T 									value_type;
@@ -13,7 +13,7 @@ struct Deque_Iterator {
 	typedef ptrdiff_t 							difference_type;
 	typedef T**  								map_pointer;
 	typedef Deque_Iterator 						self;
-	typedef Deque_Iterator<T, T&, T*, Bufsiz> 	iterator;
+	typedef Deque_Iterator<T, T&, T*, BufSiz> 	iterator;
 
 	T* cur;
 	T* first;
@@ -35,7 +35,7 @@ struct Deque_Iterator {
 #pragma region
 
 	size_t buffer_size() {
-		return Bufsiz != 0 ? Bufsiz : (sizeof(T) < 512 ? size_t(512 / sizeof(T)) : size_t(1));
+		return BufSiz != 0 ? BufSiz : (sizeof(T) < 512 ? size_t(512 / sizeof(T)) : size_t(1));
 	}
 
 #pragma endregion
@@ -87,7 +87,7 @@ struct Deque_Iterator {
 
 	self& operator+=(difference_type n) {
 		difference_type offset = n + (cur - first);
-		if(offset >= 0 && offset < difference_type(buffer_size)) {
+		if(offset >= 0 && offset < difference_type(buffer_size())) {
 			cur += n;
 		} else {
 			difference_type node_offset = offset > 0 ?

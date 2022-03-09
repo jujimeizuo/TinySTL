@@ -79,7 +79,7 @@ protected :
 		finish.cur = finish.first + num_elements % buffer_size();
 	}
 
-	size_type initial_map_size() { return (size_type)8; }
+	size_type initial_map_size() { return (size_type) 8; }
 
 	pointer allocate_node() {
 		return data_allocator::allocate(buffer_size() / sizeof(T));
@@ -96,27 +96,16 @@ protected :
 public :
 	iterator begin() { return start; }
 	iterator end()   { return finish;}
-	reference operator[](size_type n) {
-		return start[difference_type(n)];
-	}
+	reference operator[](size_type n) { return start[difference_type(n)]; }
 	reference front() { return *start; }
 	reference back()  {
 		iterator tmp = finish;
 		--tmp;
 		return *tmp;
 	}
-
-	size_type size() {
-		return finish - start;
-	}
-
-	size_type max_size() const {
-		return finish - start;
-	}
-
-	bool empty() const {
-		return finish == start;
-	}
+	size_type size() { return finish - start; }
+	size_type max_size() const { return finish - start; }
+	bool empty() const { return finish == start; }
 
 #pragma endregion
 
@@ -174,6 +163,20 @@ public :
 		finish = start;
 	}
 
+	iterator insert(iterator position, const value_type& value) {
+		if(position.cur == start.cur) {
+			push_front(value);
+			return start;
+		} else if(position.cur == finish.cur) {
+			push_back(value);
+			iterator tmp = finish;
+			--tmp;
+			return tmp;
+		} else {
+			return insert_aux(position, value);
+		}
+	}
+
 protected :
 	void push_back_aux(const value_type& value) {
 		value_type value_copy = value;
@@ -203,6 +206,32 @@ protected :
 		deallocate_node(start.first);
 		start.set_node(start.node + 1);
 		start.cur = start.first;
+	}
+
+	iterator insert_aux(iterator pos, const value_type& value) {
+		difference_type index = pos - start;
+		value_type value_copy = value;
+		if(index < size() / 2) {
+			push_front(front());
+			iterator front1 = start;
+			++front1;
+			iterator front2 = front1;
+			++front2;
+			pos = start + index;
+			iterator pos1 = pos;
+			++pos1;
+			copy(front2, pos1, front1);
+		} else {
+			push_back(back());
+			iterator back1 = finish;
+			--back1;
+			iterator back2 = back1;
+			--back2;
+			pos = start + index;
+			copy_backward(pos, back2, back1);
+		}
+		*pos = value_copy;
+		return pos;
 	}
 
 #pragma endregion
