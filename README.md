@@ -15,6 +15,6 @@
 
 ### Queue
 
-### Stack
+### Stack (Done)
 
 ### Set
