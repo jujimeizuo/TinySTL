@@ -4,13 +4,14 @@
 *
 *  chengonghao@yeah.net
 *
-*  文件名称:cghDeque容器的测试代码
+*  文件名称:Deque容器的测试代码
 ******************************************************************/
  
 #include "Deque.h"
 using namespace::std;
-
-int main() {
+ 
+int main()
+{
  
  
  
@@ -18,16 +19,15 @@ int main() {
 	/***************************************************************************************/
 	std::cout << "************************初始化、前插、后插测试************************" << endl;
 	std::cout << endl;
-	Deque<int> test; // 初始化
-	test.push_front(2); // 后插
-	test.push_front(3); // 后插
-	test.push_front(4); // 后插
+	Deque<int> test(1, 1); // 初始化
+	test.push_back(2); // 后插
+	test.push_back(3); // 后插
+	test.push_back(4); // 后插
 	test.push_front(0); // 前插
 	test.push_front(-1); // 前插
  
-
 	std::cout << "当前元素：";
-	for (Deque<int>::iterator iter = test.begin();iter != test.end(); ++iter){
+	for (Deque<int>::iterator iter = test.begin(); iter != test.end(); ++iter){
 		std::cout << *iter << ",";
 	}
 	std::cout << endl;
@@ -82,7 +82,7 @@ int main() {
 	std::cout << endl;
 	test.clear(); // 前删
 	for (int i = 0; i < 150; i++){
-		test.push_front(i);
+		test.push_back(i);
 	}
 	std::cout << "当前元素：";
 	for (Deque<int>::iterator iter = test.begin(); iter != test.end(); ++iter){
