@@ -13,8 +13,8 @@
 
 ### Deque  (90% push_front() -> runtime error)
 
-### Queue
+### Queue  (Done)
 
-### Stack (Done)
+### Stack  (Done)
 
 ### Set
