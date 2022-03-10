@@ -27,12 +27,12 @@ struct __rb_tree_node_base {
 		}
 		return x;
 	}
+};
 
-	template<class value>
-	struct __rb_tree_node : public __rb_tree_node_base {
-		typedef __rb_tree_node<value>* link_type;
-		value value_field;
-	};
+template<class value>
+struct __rb_tree_node : public __rb_tree_node_base {
+	typedef __rb_tree_node<value>* link_type;
+	value value_field;
 };
 
 #endif

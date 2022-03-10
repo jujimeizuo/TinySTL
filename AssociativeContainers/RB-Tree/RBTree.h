@@ -3,8 +3,8 @@
 
 #include "../../allocator/globalConstruct.h"
 #include "../../allocator/alloc.h"
-#include "RBTreeNode.h"
 #include "RBTreeIterator.h"
+#include "RBTreeNode.h"
 
 template<class key, class value, class keyOfValue, class compare, class Alloc = Allocator<key>>
 class RBTree {
