@@ -24,7 +24,7 @@
 
 ### RB-Tree (40% Iterator() -> error)
 
-### Set
+### Set (20% testing)
 
 ### Multiset
 
