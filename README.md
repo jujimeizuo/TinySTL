@@ -26,7 +26,7 @@
 
 ### Set (20% testing)
 
-### Multiset
+### Multiset (20 testing)
 
 ### HashTable
 
