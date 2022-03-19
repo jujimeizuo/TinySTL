@@ -12,7 +12,7 @@
 
 ### List   (Done)
 
-### Deque  (90% push_front() -> runtime error)
+### Deque  (Done)
 
 ### Queue  (Done)
 
@@ -24,9 +24,9 @@
 
 ### RB-Tree (40% Iterator error !!!)
 
-### Set (20% testing)
+### Set (70% testing)
 
-### Multiset (20 testing)
+### Multiset (50% testing)
 
-### HashTable
+### HashTable (30% testing)
 

@@ -4,16 +4,18 @@
 #include <memory>
 
 template<class T, class Ref, class Ptr, size_t BufSiz>
-struct Deque_Iterator {
+struct __deque_iterator {
+
 #pragma region
+
 	typedef T 									value_type;
 	typedef Ptr 								pointer;
 	typedef Ref 								reference;
 	typedef size_t  							size_type;
 	typedef ptrdiff_t 							difference_type;
 	typedef T**  								map_pointer;
-	typedef Deque_Iterator 						self;
-	typedef Deque_Iterator<T, T&, T*, BufSiz> 	iterator;
+	typedef __deque_iterator 						self;
+	typedef __deque_iterator<T, T&, T*, BufSiz> 	iterator;
 
 	T* cur;
 	T* first;

@@ -16,7 +16,7 @@ public :
 	typedef value_type&  											reference;
 	typedef size_t  												size_type;
 	typedef ptrdiff_t  												difference_type;
-	typedef typename Deque_Iterator<T, T&, T*, BufSiz>::iterator 	iterator;
+	typedef typename __deque_iterator<T, T&, T*, BufSiz>::iterator 	iterator;
 
 protected :
 	typedef pointer* map_pointer;
@@ -239,3 +239,4 @@ protected :
 };
 
 #endif
+

@@ -1,20 +1,19 @@
 #ifndef _ALLOC_
 #define _ALLOC_
-
+ 
 #include <new>
 #include <cstddef>
 #include <cstdlib>
 #include <climits>
 #include <iostream>
 
-#pragma region // 内存分配和释放函数、元素的构造函数和析构函数
-
+#pragma region
 // 内存分配
 template<class T>
 inline T* _allocate(ptrdiff_t size, T*) {
 	std::set_new_handler(0);
-	T* tmp = (T*)(::operator new((size_t)(sizeof(T))));
-	if(tmp == 0) {
+	T* tmp = (T*)(::operator new((size_t)(size * sizeof(T))));
+	if (tmp == 0) {
 		std::cerr << "out of memory" << std::endl;
 		exit(1);
 	}
@@ -28,9 +27,9 @@ inline void _deallocate(T* buffer) {
 }
 
 // 元素构造
-template<class T1, class T2>
+template<class T1, class  T2>
 inline void _construct(T1* p, const T2& value) {
-	new(p)T1(value);
+	new(p) T1(value);
 }
 
 // 元素析构
@@ -38,21 +37,19 @@ template<class T>
 inline void _destroy(T* ptr) {
 	ptr -> ~T();
 }
-
 #pragma endregion
 
-#pragma region // 空间配置器的实现
-
+#pragma region
 template<class T>
 class Allocator {
-public :
-	typedef T 			value_type;
-	typedef T*  		pointer;
+public:
+	typedef T			value_type;
+	typedef T*			pointer;
 	typedef const T*	const_pointer;
 	typedef T&			reference;
-	typedef const T&  	const_reference;
-	typedef size_t 		size_type;
-	typedef ptrdiff_t 	difference_type;
+	typedef const T&	const_reference;
+	typedef size_t		size_type;
+	typedef ptrdiff_t	difference_type;
 
 	template<class U>
 	struct rebind {
@@ -91,31 +88,28 @@ public :
 		return size_type(UINT_MAX / sizeof(T));
 	}
 };
-
 #pragma endregion
 
-#pragma region // 封装STL标准的空间配置器接口
-
+#pragma region
 template<class T, class Alloc = Allocator<T>>
 class simple_alloc {
-public :
+public:
 	static T* allocate(size_t n) {
-		return n == 0 ? 0 : (T*)Alloc::allocate(n * sizeof(T));
+		return 0 == n ? 0 : (T*)Alloc::allocate(n*sizeof(T));
 	}
 
 	static T* allocate(void) {
-		return (T*) Alloc::allocate(sizeof(T));
+		return (T*)Alloc::allocate(sizeof(T));
 	}
 
 	static void deallocate(T* p, size_t n) {
-		if(n != 0) Alloc::deallocate(p, n * sizeof(T));
+		if (0 != n)Alloc::deallocate(p, n*sizeof(T));
 	}
 
 	static void deallocate(void* p) {
 		Alloc::deallocate(p);
 	}
 };
-
 #pragma endregion
 
 #endif
