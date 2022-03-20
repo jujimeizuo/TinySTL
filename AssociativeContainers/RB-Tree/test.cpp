@@ -8,12 +8,12 @@
 ******************************************************************/
  
 #include "RBTree.h"
-using namespace::std;
- 
+#include <bits/stdc++.h>
+using namespace std;
 int main()
 {
  
-	RBTree<int, int, identity<int>, less<int>> test;
+	RBTree<int, int, identity<int>, less<int> > test;
  
 	test.insert_unique(10);
 	test.insert_unique(7);
@@ -25,7 +25,7 @@ int main()
 	test.insert_unique(13);
 	test.insert_unique(12);
  
-	RBTree<int, int, identity<int>, less<int>>::iterator it = test.begin();
+	RBTree<int, int, identity<int>, less<int> >::iterator it = test.begin();
 	int i = 1;
 	for (; it != test.end(); it++)
 	{
