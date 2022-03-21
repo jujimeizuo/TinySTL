@@ -270,6 +270,7 @@ private :
 		x -> parent = y;
 	}
 
+
 	inline void __rb_tree_rotate_right(__rb_tree_node_base* x, __rb_tree_node_base*& root) {
 		__rb_tree_node_base* y = x -> left;
 		x -> left = y -> right;
