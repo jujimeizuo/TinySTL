@@ -1,6 +1,7 @@
 #ifndef _UTIL
 #define _UTIL
 
+
 template<class T1, class T2>
 struct Pair {
 	typedef T1   	first_type;
