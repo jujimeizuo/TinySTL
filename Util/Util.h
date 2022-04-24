@@ -18,6 +18,7 @@ void swap(T& a, T& b) {
 	T c(a); a = b; b = c;
 }
 
+
 void * __cdecl memove(void * dst, const void * src, size_t count) {
 	void *ret = dst;
 	if(dst <= src || (char *) dst >= ((char *) src + count)) {
