@@ -16,6 +16,7 @@ inline void destroy(T* pointer) {
 	pointer->~T();
 }
 
+
 template<class ForwardIterator>
 inline void destroy(ForwardIterator first, ForwardIterator last) {
 	for (; first < last; ++first)
